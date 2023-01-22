@@ -1,5 +1,5 @@
 # home
-Overview of my personal infrastructure.
+Overview of my home infrastructure.
 
 <p align="center">
   <img src="data/network.png" alt="network"/>
