@@ -15,7 +15,7 @@ Performing NAT (MASQ, 1:1), policies and security controls.
 
 Is very simple to setup a VPN-Agregator with systemd:
 ```
-interface=wg01.conf
+interface=wg01
 systemctl enable wg-quick@$interface
 systemctl start wg-quick@$interface
 ```
@@ -67,6 +67,12 @@ Operative system SSH opts: no-pwd,no-root,key_auth,strict
 Load-balancing: HAProxy
 VPN: WIREGUARD (with both symmetric and asymmetric keys)
 Scripts main language: PYTHON
+```
+
+# Routes
+If you want to route a external range, add the route to the agregator:
+```
+ip route add 10.77.5.0/24 dev wg2
 ```
 
 # VPN and Public IP
