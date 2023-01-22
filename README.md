@@ -11,7 +11,14 @@ Running minimal services and mainly used as entry-point or vpn-agregator.
 
 ### Ubuntu
 Machine mainly used as Firewall - with SHOREWALL - and as VPN-Agregator - with WIREGUARD - to manage backbone network. 
-Performing NAT (MASQ, 1:1), policies and security controls.
+Performing NAT (MASQ, 1:1), policies and security controls. 
+
+Is very simple to setup a VPN-Agregator with systemd:
+```
+interface=wg01.conf
+systemctl enable wg-quick@$interface
+systemctl start wg-quick@$interface
+```
 
 Running a DNS service to manage backbone's domain names and dns-leak for vpn's users.
 
