@@ -50,4 +50,4 @@ N*1 RASPERRY PI
 Post-Quantum WIREGUARD peer that serve out backend services.
 
 # VPN and Public IP
-Some VPN actors are also able to use the infrastructure to masquerade their IP (thanks to kernel ip forwarding!).
+Some VPN actors are also able to use the infrastructure to masquerade their IP (thanks kernel ip forwarding!).
