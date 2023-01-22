@@ -49,5 +49,18 @@ N*1 RASPERRY PI
 ### Ubuntu stand-alone
 Post-Quantum WIREGUARD peer that serve out backend services.
 
+# Stack
+All infrastructure is aligned with the following stack:
+
+```
+Operative system: UBUNTU
+Operative system firewall: SHOREWALL
+Operative system HA: Keepalived (keepalived.org)
+Operative system SSH opts: no-pwd,no-root,key_auth,strict
+Load-balancing: HAProxy
+VPN: WIREGUARD (with both symmetric and asymmetric keys)
+Scripts main language: PYTHON
+```
+
 # VPN and Public IP
 Some VPN actors are also able to use the infrastructure to masquerade their IP (thanks kernel ip forwarding!).
