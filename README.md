@@ -115,7 +115,7 @@ iptables -t nat -A PREROUTING -d 10.11.33.1 -i wg0 -j DNAT --to-destination 10.1
 iptables -t nat -A POSTROUTING -s 10.12.34.1 -o wg0 -j SNAT --to-source 10.11.33.1
 ```
 
-So, if you want to perform a symmetric nat to a whole range, you need to manually configure iptables with NETMAP action (```-j NETMAP```) as described before.
+So, if you want to perform a symmetric nat with SHOREWALL, use the NETMAP file.
 
 ## VPN users
 Some VPN users are also able to use the infrastructure to masquerade their IP (thanks kernel ip forwarding).
