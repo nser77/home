@@ -54,7 +54,9 @@ N*1 RASPERRY PI
 ```
 
 ### Ubuntu stand-alone
-Post-Quantum WIREGUARD peer that serve out backend services.
+Post-Quantum WIREGUARD peer that interconnect DC-ES with OVH.
+
+Also used as AMG (Advanced Management Gateway) with others VPNs (IPSEC or SSL); this gateway could be used as transit gateway or - in case - as jump server: I'm running my job's VPN client in this server (with vpnc) and i'm able to access to wole services (even customers zones).
 
 # Stack
 All infrastructure is aligned with the following stack:
@@ -90,14 +92,14 @@ iptables -A FORWARD -i tun0 -o wg0 -j ACCEPT
 ```
 
 ### Symmetric NAT limitations
-When you configure a symmetric NAT rule in SHOREWALL, it will be traslated into the following iptables rules:
+When you configure a symmetric NAT rule in SHOREWALL, it will be translated into the following SNAT and DNAT iptables rules:
 
 ```
 iptables -t nat -A PREROUTING -d 10.11.33.1 -i wg0 -j DNAT --to-destination 10.12.34.1
 iptables -t nat -A POSTROUTING -s 10.12.34.1 -o wg0 -j SNAT --to-source 10.11.33.1
 ```
 
-So if you want to NETMAP a whole range you need to manually configure iptables with NETMAP action (```-j NETMAP```) as described before.
+So, if you want to perform a symmetric nat to a whole range, you need to manually configure iptables with NETMAP action (```-j NETMAP```) as described before.
 
 # VPN and Public IP
 Some VPN actors are also able to use the infrastructure to masquerade their IP (thanks kernel ip forwarding!).
