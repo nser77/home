@@ -89,5 +89,15 @@ iptables -A FORWARD -i wg0 -o tun0 -j ACCEPT
 iptables -A FORWARD -i tun0 -o wg0 -j ACCEPT
 ```
 
+### Symmetric NAT limitations
+When you configure a symmetric NAT rule in SHOREWALL, it will be traslated into the following iptables rules:
+
+```
+iptables -t nat -A PREROUTING -d 10.11.33.1 -i wg0 -j DNAT --to-destination 10.12.34.1
+iptables -t nat -A POSTROUTING -s 10.12.34.1 -o wg0 -j SNAT --to-source 10.11.33.1
+```
+
+So if you want to NETMAP a whole range you need to manually configure iptables with NETMAP action (```-j NETMAP```) as described before.
+
 # VPN and Public IP
 Some VPN actors are also able to use the infrastructure to masquerade their IP (thanks kernel ip forwarding!).
