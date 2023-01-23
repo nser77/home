@@ -37,12 +37,12 @@ N*2 Pine64 (ROCK64 and Pine64)
 ### MIKROTIK
 Post-Quantum WIREGUARD peer that interconnect DC-ITA with OVH.
 
-Managing only one PPPoE interface with one Public IP, two MIKROIKs and VRRP (on/off switch script on MIKROTIK); alse running VRRP on LAN interfaces to serve local infrastructure.
+Managing only one PPPoE interface with one Public IP, two MIKROIKs (on/off switch script on MIKROTIK to manage fail-over); also running VRRP on LAN interfaces to serve local infrastructure.
 
 Managing local "family" network with CAPsMAN (2 APs), VLAN (access and trunk mode) and security policies.
 
 ### Ubuntu cluster
-Running backend services clustered with Keepalived (keepalived.org).
+Running backend services clustered with Keepalived VRRP (keepalived.org).
 
 Some examples could be: CockroachDB, Elastic Search or even REDIS.
 
