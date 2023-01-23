@@ -41,7 +41,7 @@ Running a DNS service to manage backbone's domain names and dns-leak for vpn's u
 Can also run front-end applications.
 
 ## DC-ITA
-Located in Italy, running backend services and secured with MIKROTIK.
+On premises DC located in Italy, running backend services and secured with MIKROTIK.
 
 ```
 N*2 MIKROTIK Router
@@ -63,7 +63,7 @@ Running backend services clustered with Keepalived VRRP (keepalived.org).
 Some examples could be: CockroachDB, Elastic Search or even REDIS.
 
 ## DC-ES
-Located in Spain, running backend services and still not secured with MIKROTIK.
+On premises DC located in Spain, running backend services and still not secured with MIKROTIK.
 
 ```
 N*1 RASPERRY PI
