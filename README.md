@@ -11,7 +11,6 @@ A little project to describe my home infrastructure.
 - [DC-ES](#dc-es)
   - [DC-ITA/Ubuntu](#ubuntu-es)
 - [Stack](#stack)
-- [Routes and NAT](#routes-and-nat)
 - [VPN users](#vpn-users)
 
 ## Overview
@@ -86,36 +85,6 @@ Load-balancing: HAProxy
 VPN: WIREGUARD (with both symmetric and asymmetric keys)
 Scripts main language: PYTHON
 ```
-
-## Routes and NAT
-Linux systems enable administrator to route requests between interfaces.
-
-### Routes
-If you want to route an external range, add the route to the aggregator:
-```
-ip route add 10.77.5.0/24 dev wg2
-```
-
-### NAT
-To configure a symmetric NAT between two different VPN interfaces:
-
-```
-iptables -t nat -A PREROUTING -i wg0 -d 10.11.33.0/24 -j NETMAP --to 10.12.34.0/24
-iptables -t nat -A POSTROUTING -o wg0 -d 10.12.34.0/24 -j NETMAP --to 10.11.33.0/24
-iptables -t nat -A POSTROUTING -s 10.0.0.0/24 -d 10.12.34.0/24 -o tun0 -j MASQUERADE
-iptables -A FORWARD -i wg0 -o tun0 -j ACCEPT
-iptables -A FORWARD -i tun0 -o wg0 -j ACCEPT
-```
-
-#### Symmetric NAT limitations
-When you configure a symmetric NAT rule in SHOREWALL, it will be translated into the following SNAT and DNAT iptables rules:
-
-```
-iptables -t nat -A PREROUTING -d 10.11.33.1 -i wg0 -j DNAT --to-destination 10.12.34.1
-iptables -t nat -A POSTROUTING -s 10.12.34.1 -o wg0 -j SNAT --to-source 10.11.33.1
-```
-
-So, if you want to perform a symmetric nat with SHOREWALL, use the NETMAP file.
 
 ## VPN users
 Some VPN users are also able to use the infrastructure to masquerade their IP (thanks kernel ip forwarding).
