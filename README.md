@@ -7,13 +7,13 @@ Overview of my home infrastructure.
 
 ## OVH
 Main VPS data center.
-Running minimal services and mainly used as load-balancer or vpn-agregator.
+Running minimal services and mainly used as load-balancer or vpn-aggregator.
 
 ### Ubuntu
-Machine mainly used as Firewall - with SHOREWALL - and as VPN-Agregator - with WIREGUARD - to manage backbone network. 
+Machine mainly used as Firewall - with SHOREWALL - and as VPN-aggregator - with WIREGUARD - to manage backbone network. 
 Performing NAT (MASQ, 1:1), policies and security controls. 
 
-Is very simple to setup a VPN-Agregator with systemd:
+Is very simple to setup a VPN-aggregator with systemd:
 ```
 interface=wg01
 systemctl enable wg-quick@$interface
@@ -69,10 +69,24 @@ VPN: WIREGUARD (with both symmetric and asymmetric keys)
 Scripts main language: PYTHON
 ```
 
-# Routes
-If you want to route a external range, add the route to the agregator:
+# Routes and NAT
+Linux systems enable administrator to route requests between interfaces.
+
+## Route
+If you want to route an external range, add the route to the aggregator:
 ```
 ip route add 10.77.5.0/24 dev wg2
+```
+
+## NAT
+To configure a symmetric NAT between two different VPN interfaces:
+
+```
+iptables -t nat -A PREROUTING -i wg0 -d 10.11.33.0/24 -j NETMAP --to 10.12.34.0/24
+iptables -t nat -A POSTROUTING -o wg0 -d 10.12.34.0/24 -j NETMAP --to 10.11.33.0/24
+iptables -t nat -A POSTROUTING -s 10.0.0.0/24 -d 10.12.34.0/24 -o tun0 -j MASQUERADE
+iptables -A FORWARD -i wg0 -o tun0 -j ACCEPT
+iptables -A FORWARD -i tun0 -o wg0 -j ACCEPT
 ```
 
 # VPN and Public IP
