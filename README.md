@@ -1,4 +1,20 @@
 # home
+A little project to describe my home infrastructure.
+
+# Table of Contents
+- [Overview](#overview)
+- [OVH](#ovh)
+  - [OVH/Ubuntu](#ubuntu-ovh)
+- [DC-ITA](#dc-ita)
+  - [DC-ITA/MIKROTIK](#mikrotik-ita)
+  - [DC-ITA/Ubuntu](#ubuntu-ita)
+- [DC-ES](#dc-es)
+  - [DC-ITA/Ubuntu](#ubuntu-es)
+- [Stack](#stack)
+- [Routes and NAT](#routes-and-nat)
+- [VPN](#vpn-users)
+
+## Overview
 Overview of my home infrastructure.
 
 <p align="center">
@@ -9,7 +25,7 @@ Overview of my home infrastructure.
 Main VPS data center.
 Running minimal services and mainly used as load-balancer or vpn-aggregator.
 
-### Ubuntu
+### Ubuntu-OVH
 Machine mainly used as Firewall - with SHOREWALL - and as VPN-aggregator - with WIREGUARD - to manage backbone network. 
 Performing NAT (MASQ, 1:1), policies and security controls. 
 
@@ -34,14 +50,14 @@ N*1 ZYXEL Managed Switch
 N*2 Pine64 (ROCK64 and Pine64)
 ```
 
-### MIKROTIK
+### MIKROTIK-ITA
 Post-Quantum WIREGUARD peer that interconnect DC-ITA with OVH.
 
 Managing only one PPPoE interface with one Public IP, two MIKROIKs (on/off switch script on MIKROTIK to manage fail-over); also running VRRP on LAN interfaces to serve local infrastructure.
 
 Managing local "family" network with CAPsMAN (2 APs), VLAN (access and trunk mode) and security policies.
 
-### Ubuntu cluster
+### UBUNTU-ITA
 Running backend services clustered with Keepalived VRRP (keepalived.org).
 
 Some examples could be: CockroachDB, Elastic Search or even REDIS.
@@ -53,12 +69,12 @@ Located in Spain, running backend services and still not secured with MIKROTIK.
 N*1 RASPERRY PI
 ```
 
-### Ubuntu stand-alone
-Post-Quantum WIREGUARD peer that interconnect DC-ES with OVH.
+### UBUNTU-ES
+Stand alone Post-Quantum WIREGUARD peer that interconnect DC-ES with OVH.
 
 Also used as AMG (Advanced Management Gateway) with others VPNs (IPSEC or SSL); this gateway could be used as transit gateway or - in case - as jump server: I'm running my job's VPN client in this server (with vpnc) and i'm able to access to wole services (even customers zones).
 
-# Stack
+## Stack
 All infrastructure is aligned with the following stack:
 
 ```
@@ -71,16 +87,16 @@ VPN: WIREGUARD (with both symmetric and asymmetric keys)
 Scripts main language: PYTHON
 ```
 
-# Routes and NAT
+## Routes and NAT
 Linux systems enable administrator to route requests between interfaces.
 
-## Route
+### Routes
 If you want to route an external range, add the route to the aggregator:
 ```
 ip route add 10.77.5.0/24 dev wg2
 ```
 
-## NAT
+### NAT
 To configure a symmetric NAT between two different VPN interfaces:
 
 ```
@@ -91,7 +107,7 @@ iptables -A FORWARD -i wg0 -o tun0 -j ACCEPT
 iptables -A FORWARD -i tun0 -o wg0 -j ACCEPT
 ```
 
-### Symmetric NAT limitations
+#### Symmetric NAT limitations
 When you configure a symmetric NAT rule in SHOREWALL, it will be translated into the following SNAT and DNAT iptables rules:
 
 ```
@@ -101,5 +117,5 @@ iptables -t nat -A POSTROUTING -s 10.12.34.1 -o wg0 -j SNAT --to-source 10.11.33
 
 So, if you want to perform a symmetric nat to a whole range, you need to manually configure iptables with NETMAP action (```-j NETMAP```) as described before.
 
-# VPN and Public IP
-Some VPN actors are also able to use the infrastructure to masquerade their IP (thanks kernel ip forwarding!).
+## VPN users
+Some VPN users are also able to use the infrastructure to masquerade their IP (thanks kernel ip forwarding).
