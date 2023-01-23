@@ -1,2 +1,2 @@
 iptables -A PREROUTING -i wg0 -d 10.11.33.0/24 --to 10.12.34.0/24 -j NETMAP
-iptables -A PREROUTING -o wg0 -d 10.12.34.0/24 --to 10.11.33.0/24 -j NETMAP
+iptables -A POSTROUTING -o wg0 -d 10.12.34.0/24 --to 10.11.33.0/24 -j NETMAP
