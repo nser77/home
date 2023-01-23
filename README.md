@@ -12,7 +12,7 @@ A little project to describe my home infrastructure.
   - [DC-ITA/Ubuntu](#ubuntu-es)
 - [Stack](#stack)
 - [Routes and NAT](#routes-and-nat)
-- [VPN](#vpn-users)
+- [VPN users](#vpn-users)
 
 ## Overview
 Overview of my home infrastructure.
