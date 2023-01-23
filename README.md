@@ -7,7 +7,7 @@ Overview of my home infrastructure.
 
 ## OVH
 Main VPS data center.
-Running minimal services and mainly used as entry-point or vpn-agregator.
+Running minimal services and mainly used as load-balancer or vpn-agregator.
 
 ### Ubuntu
 Machine mainly used as Firewall - with SHOREWALL - and as VPN-Agregator - with WIREGUARD - to manage backbone network. 
