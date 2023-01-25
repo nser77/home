@@ -1,5 +1,5 @@
 # home
-A little project to describe my home infrastructure.
+A little project to describe my hybrid-home infrastructure based on Linux.
 
 # Table of Contents
 - [Overview](#overview)
