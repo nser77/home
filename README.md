@@ -7,9 +7,10 @@ A little project to describe my hybrid-home infrastructure based on Linux.
   - [OVH/Ubuntu](#ubuntu-ovh)
 - [DC-ITA](#dc-ita)
   - [DC-ITA/MIKROTIK](#mikrotik-ita)
-  - [DC-ITA/Ubuntu](#ubuntu-ita)
+  - [DC-ITA/UBUNTU](#ubuntu-ita)
 - [DC-ES](#dc-es)
-  - [DC-ITA/Ubuntu](#ubuntu-es)
+  - [DC-ES/MIKROTIK](#mikrotik-es) 
+  - [DC-ES/UBUNTU](#ubuntu-es)
 - [Stack](#stack)
 - [VPN users](#vpn-users)
 
@@ -62,14 +63,16 @@ Running backend services clustered with Keepalived VRRP (keepalived.org).
 Some examples could be: CockroachDB, Elastic Search or even REDIS.
 
 ## DC-ES
-On premises DC located in Spain, running backend services and still not secured with MIKROTIK.
+On premises DC located in Spain, running backend services.
 
 ```
 N*1 RASPERRY PI
 ```
+### MIKROTIK-ES
+Post-Quantum WIREGUARD peer that interconnect DC-ES with OVH.
 
 ### UBUNTU-ES
-Stand alone Post-Quantum WIREGUARD peer that interconnect DC-ES with OVH.
+Running backend services.
 
 Also used as AMG (Advanced Management Gateway) with others VPNs (IPSEC or SSL); this gateway could be used as transit gateway or - in case - as jump server: I'm running my job's VPN client in this server (with vpnc) and i'm able to access to wole services (even customers zones).
 
