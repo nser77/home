@@ -67,6 +67,7 @@ Some examples could be: CockroachDB, Elastic Search or even REDIS.
 On premises DC located in Spain, running backend services.
 
 ```
+N*1 MIKROTIK Router
 N*1 RASPERRY PI
 ```
 ### MIKROTIK-ES
