@@ -3,6 +3,7 @@ A little project to describe my hybrid-home infrastructure based on Linux.
 
 # Table of Contents
 - [Overview](#overview)
+- [Live demo](#live-demo)
 - [OVH](#ovh)
   - [OVH/Ubuntu](#ubuntu-ovh)
 - [DC-ITA](#dc-ita)
@@ -21,6 +22,19 @@ Overview of my home infrastructure.
 <p align="center">
   <img src="data/network-v5.png" alt="network"/>
 </p>
+
+## Live demo
+I written a minimalist HTTP tool to dynamically fetch data from MIKROIKs devices and securely expose my backbone.
+
+Please visit [https://public-ip](https://public-ip).
+
+The tool only use a bit of javascript to print the data and you can check how minimalistic is by running:
+
+```
+curl https://<public-ip>/reader/10.150.0.2 --insecure > minimalistic-detail.txt
+```
+
+In the index page javascript is not present.
 
 ## OVH
 Main VPS data center.
