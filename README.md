@@ -11,6 +11,7 @@ A little project to describe my hybrid-home infrastructure based on Linux.
 - [DC-ES](#dc-es)
   - [DC-ES/MIKROTIK](#mikrotik-es) 
   - [DC-ES/UBUNTU](#ubuntu-es)
+- [Stats](#stats)
 - [Stack](#stack)
 - [VPN users](#vpn-users)
 
@@ -75,6 +76,32 @@ Post-Quantum WIREGUARD peer that interconnect DC-ES with OVH.
 Running backend services.
 
 Also used as AMG (Advanced Management Gateway) with others VPNs (IPSEC or SSL); this gateway could be used as transit gateway or - in case - as jump server: I'm running my job's VPN client in this server (with vpnc) and i'm able to access to wole services (even customers zones).
+
+## Stats
+Example of pings between DCs.
+
+### ES-to-OVH
+```
+root@ubuntu:/home/ubuntu# ping 10.150.0.5 -c100
+PING 10.150.0.5 (10.150.0.5) 56(84) bytes of data.
+[...]
+
+--- 10.150.0.5 ping statistics ---
+100 packets transmitted, 100 received, 0% packet loss, time 99150ms
+rtt min/avg/max/mdev = 32.783/33.153/33.601/0.115 ms
+
+```
+
+### ES-to-ITA
+```
+root@ubuntu:/home/ubuntu# ping 10.0.20.6 -c100
+PING 10.0.20.6 (10.0.20.6) 56(84) bytes of data.
+[...]
+
+--- 10.0.20.6 ping statistics ---
+100 packets transmitted, 100 received, 0% packet loss, time 99146ms
+rtt min/avg/max/mdev = 55.265/70.383/101.775/7.329 ms
+```
 
 ## Stack
 All infrastructure is aligned with the following stack:
