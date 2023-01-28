@@ -84,6 +84,7 @@ Operative system: UBUNTU
 Operative system firewall: SHOREWALL
 Operative system HA: Keepalived (keepalived.org)
 Operative system SSH opts: no-pwd,no-root,key_auth,strict
+Perimetral firewall: MIKROTIK
 Load-balancing: HAProxy
 VPN: WIREGUARD (with both symmetric and asymmetric keys)
 Scripts main language: PYTHON
