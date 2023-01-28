@@ -18,7 +18,7 @@ A little project to describe my hybrid-home infrastructure based on Linux.
 Overview of my home infrastructure.
 
 <p align="center">
-  <img src="data/network-v4.png" alt="network"/>
+  <img src="data/network-v5.png" alt="network"/>
 </p>
 
 ## OVH
