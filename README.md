@@ -26,6 +26,8 @@ Overview of my home infrastructure.
 ## Live demo
 I written a minimalist HTTP tool to dynamically fetch data from MIKROIKs devices and securely expose my backbone.
 
+Please note that the tool only use only a bit of javascript to display data from the backend, the index page has not javascript code.
+
 Please visit [https://public-ip](https://public-ip).
 
 ## OVH
