@@ -28,12 +28,7 @@ I written a minimalist HTTP tool to dynamically fetch data from MIKROIKs devices
 
 Please visit [https://public-ip](https://public-ip).
 
-The tool only use a bit of javascript to print the data and you can check how minimalistic is by running:
-
-```
-curl https://<public-ip>/reader/10.150.0.2 --insecure > minimalistic-detail.txt
-```
-
+The tool only use a bit of javascript.
 In the index page javascript is not present.
 
 ## OVH
