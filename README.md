@@ -28,7 +28,7 @@ I written a minimalist HTTP tool to dynamically fetch data from MIKROIKs devices
 
 Please note that the tool only use only a bit of javascript to display data from the backend, the index page has not javascript code.
 
-Please visit [https://public-ip](https://public-ip).
+Please visit [https://149.202.46.138/](https://149.202.46.138/).
 
 ## OVH
 Main VPS data center.
