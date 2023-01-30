@@ -28,9 +28,6 @@ I written a minimalist HTTP tool to dynamically fetch data from MIKROIKs devices
 
 Please visit [https://public-ip](https://public-ip).
 
-The tool only use a bit of javascript.
-In the index page javascript is not present.
-
 ## OVH
 Main VPS data center.
 Running minimal services and mainly used as load-balancer or vpn-aggregator.
