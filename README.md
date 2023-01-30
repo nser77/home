@@ -24,7 +24,7 @@ Overview of my home infrastructure.
 </p>
 
 ## Live demo
-I written a minimalist HTTP tool to dynamically fetch data from MIKROIKs devices and securely expose my backbone.
+I written a minimalist HTTP tool to dynamically fetch data from MIKROTIKs devices and securely expose my backbone.
 
 Please note that the tool only use only a bit of javascript to display data from the backend, the index page has not javascript code.
 
