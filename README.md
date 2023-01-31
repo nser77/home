@@ -127,4 +127,4 @@ Scripts main language: PYTHON
 ```
 
 ## VPN users
-Some VPN users are also able to use the infrastructure to masquerade their IP (thanks kernel ip forwarding).
+Some VPN users are also ables to use the infrastructure to masquerade their IP (thanks kernel ip forwarding).
